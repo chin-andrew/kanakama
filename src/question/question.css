@@ -1,0 +1,9 @@
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question__buttons {
+  margin-top: 20px;
+}
