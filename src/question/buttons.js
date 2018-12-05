@@ -1,7 +1,7 @@
 import React from 'react';
 import { insert } from 'ramda';
 import { generateRandomNumber } from '../utils';
-import hiragana from '../hiragana'
+import kana from '../kana'
 import './buttons.css';
 
 export default (selectedKana, onClickCorrect, onClickIncorrect) => {
@@ -9,11 +9,11 @@ export default (selectedKana, onClickCorrect, onClickIncorrect) => {
     const options = [];
     const correctOption = <button className='answer-button' onClick={() => onClickCorrect()}>{selectedKana.name}</button>
     while (options.length < 2) {
-      const randomNumber = generateRandomNumber(0, hiragana.length - 1);
+      const randomNumber = generateRandomNumber(0, kana.length - 1);
       if (randomNumber !== selected) {
-        if (hiragana[randomNumber].id !== selectedKana.id) {
+        if (kana[randomNumber].id !== selectedKana.id) {
           selected = randomNumber;
-          const option = <button className='answer-button' onClick={() => onClickIncorrect()}>{hiragana[randomNumber].name}</button>
+          const option = <button className='answer-button' onClick={() => onClickIncorrect()}>{kana[randomNumber].name}</button>
           options.push(option);
         }
       }

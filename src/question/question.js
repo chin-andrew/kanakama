@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { concat } from 'ramda';
-import hiragana from '../hiragana'
-import katakana from '../katakana'
+import kana from '../kana'
 import { generateRandomNumber } from '../utils';
 import generateAnswerButtons from './buttons'
 import fetchKanaImage from './image'
@@ -12,6 +10,7 @@ export default class Question extends Component {
     super(props)
     this.state = {
       selectedKana: undefined,
+      incorrectAnswer: undefined,
     }
   }
 
@@ -20,41 +19,48 @@ export default class Question extends Component {
   }
 
   selectKana = () => {
-    let list;
+    const randomNumber = generateRandomNumber(0, kana.length);
+    this.setState({ selectedKana: kana[randomNumber]});
+  }
+
+  selectImage = () => {
+    const { selectedKana } = this.state;
+
     switch (this.props.mode) {
       case 'hiragana':
-        list = hiragana;
-        break;
+        return selectedKana.hiraganaPath;
       case 'katakana':
-        list = katakana;
-        break;
+        return selectedKana.katakanaPath;
       default:
-        list = concat(hiragana, katakana);
-        break;
+        const random = Math.round(Math.random())
+        if (random === 0) {
+          return selectedKana.hiraganaPath;
+        } else {
+          return selectedKana.katakanaPath;
+        }
     }
-    const randomNumber = generateRandomNumber(0, list.length);
-    this.setState({ selectedKana: list[randomNumber]});
   }
 
   onClickCorrect = () => {
     this.props.incrementCorrect();
     this.selectKana();
+    this.setState({ incorrectAnswer: undefined })
   }
 
   onClickIncorrect = () => {
     this.props.incrementIncorrect();
-    this.selectKana();
+    this.setState({ incorrectAnswer: this.state.selectedKana})
   }
 
   render() {
-    const { selectedKana } = this.state;
+    const { selectedKana, incorrectAnswer } = this.state;
     let renderContent = <div>loading</div>;
     if (selectedKana) {
       renderContent = (
         <div className='question'>
-        {fetchKanaImage(selectedKana.imgPath)}
+        {fetchKanaImage(this.selectImage(), 'kana-image')}
         <div className='question__buttons'>
-          {generateAnswerButtons(selectedKana, this.onClickCorrect, this.onClickIncorrect)}
+          {generateAnswerButtons(selectedKana, this.onClickCorrect, this.onClickIncorrect, )}
         </div>
       </div>
       )

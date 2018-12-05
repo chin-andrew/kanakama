@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import selectMode from './title/mode-selector'
+import title from './title/title';
 import Question from './question/question';
 import displayScore from './feedback/counter';
 import './App.css';
@@ -30,7 +30,7 @@ class App extends Component {
   render() {
     const { correct, incorrect, mode } = this.state;
 
-    let renderContent = selectMode(this.setMode)
+    let renderContent = title(this.setMode)
     if (mode) {
       renderContent = (
         <div>

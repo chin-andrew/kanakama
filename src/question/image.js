@@ -1,8 +1,8 @@
 import React from 'react';
 import './image.css'
 
-export default (imagePath) => {
+export default (imagePath, className) => {
   const reqSvgs = require.context ( '../images', true, /\.svg$/ )
-  return <img className='kana-image' src={reqSvgs(imagePath)} />
+  return <img className={className} src={reqSvgs(imagePath)} />
 }
 

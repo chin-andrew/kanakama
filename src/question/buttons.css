@@ -5,4 +5,9 @@
   margin: 4px;
   padding: 12px 0px;
   width: 120px;
+  cursor: pointer;
+}
+
+.answer-button:hover {
+  background-color: darkgray;
 }
