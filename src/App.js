@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import title from './title/title';
-import Question from './question/question';
 import displayScore from './feedback/counter';
+import Question from './question/question';
+import title from './title/title';
 import './App.css';
 
 class App extends Component {
@@ -29,25 +29,24 @@ class App extends Component {
 
   render() {
     const { correct, incorrect, mode } = this.state;
-
-    let renderContent = title(this.setMode)
-    if (mode) {
-      renderContent = (
-        <div>
-          <div> ｋａｎａｋａｍａ </div>
-          <div> your kana companion </div>
-          <Question
-            incrementCorrect={this.incrementCorrect}
-            incrementIncorrect={this.incrementIncorrect}
-            mode={mode}
-          />
-          { displayScore(correct, incorrect) }
-        </div>
-      );
-    }
-    console.log(renderContent)
     return (
-      renderContent
+      <div>
+        {mode === undefined ? 
+          (title(this.setMode)) :
+          (
+            <div>
+              <div> ｋａｎａｋａｍａ </div>
+              <div> your kana companion </div>
+              <Question
+                incrementCorrect={this.incrementCorrect}
+                incrementIncorrect={this.incrementIncorrect}
+                mode={mode}
+              />
+              { displayScore(correct, incorrect) }
+            </div>
+          )
+        }
+      </div>
     );
   }
 }
