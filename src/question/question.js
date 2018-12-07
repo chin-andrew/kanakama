@@ -16,26 +16,20 @@ export default class Question extends Component {
   }
 
   componentDidMount() {
-    this.selectKana();
+    this.buildQuestion();
   }
 
-  selectKana = () => {
-    // TODO: generate button order and pass down to prevent answer rearranging on rerender
+  buildQuestion = () => {
     this.setState({ incorrectAnswer: undefined })
-    const randomNumber = generateRandomNumber(0, kana.length);
-    this.selectIncorrectAnswers(randomNumber);
-    this.setState({ selectedKana: kana[randomNumber]});
-  }
-
-  selectIncorrectAnswers = (correctAnswer) => {
     const buttonOptions = [];
-    while (buttonOptions.length < 2) {
+    while (buttonOptions.length < 3) {
       const randomNumber = generateRandomNumber(0, kana.length);
-      if (randomNumber != correctAnswer && !includes(randomNumber, buttonOptions)) {
+      if (!includes(randomNumber, buttonOptions)) {
         buttonOptions.push(randomNumber);
       }
     }
-    this.setState({ buttonOptions })
+    const selectedKana = kana[buttonOptions[generateRandomNumber(0, 3)]];
+    this.setState({ selectedKana, buttonOptions });
   }
 
   selectImage = () => {
@@ -57,12 +51,12 @@ export default class Question extends Component {
 
   onClickCorrect = () => {
     this.props.incrementCorrect();
-    this.selectKana();
+    this.buildQuestion();
   }
 
   onClickIncorrect = () => {
     this.props.incrementIncorrect();
-    this.selectKana();
+    this.buildQuestion();
   }
 
   render() {

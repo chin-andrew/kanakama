@@ -1,6 +1,4 @@
 import React, { PureComponent } from 'react';
-import { insert } from 'ramda';
-import { generateRandomNumber } from '../utils';
 import kana from '../kana'
 import './buttons.css';
 
@@ -14,7 +12,6 @@ export default class AnswerButtons extends PureComponent {
 
   setIncorrectAnswer = (incorrectAnswer) => {
     this.setState({ incorrectAnswer });
-    // this.props.onClickIncorrect();
   }
 
   onClickNext = () => {
@@ -31,15 +28,18 @@ export default class AnswerButtons extends PureComponent {
 
     const { incorrectAnswer } = this.state;
 
-    const incorrectButtons = [];
     const correctButtonClassName = `answer-button${incorrectAnswer ? '--correct' : ''}`;
     const incorrectButtonClassName = `answer-button${incorrectAnswer ? '--incorrect' : ''}`;
-    const correctButton = <button className={correctButtonClassName} onClick={() => onClickCorrect()}>{selectedKana.name}</button>
-    for (const option in buttonOptions) {
-      const button = <button className={incorrectButtonClassName} onClick={() => this.setIncorrectAnswer(kana[buttonOptions[option]].name)}>{kana[buttonOptions[option]].name}</button>
-      incorrectButtons.push(button);
+
+    const buttons = [];
+    for (const element in buttonOptions) {
+        const currentKana = kana[buttonOptions[element]];
+        const button = currentKana.name === selectedKana.name ?
+          <button className={correctButtonClassName} onClick={() => onClickCorrect()}>{currentKana.name}</button> :
+          <button className={incorrectButtonClassName} onClick={() => this.setIncorrectAnswer(currentKana.name)}>{currentKana.name}</button>;
+        buttons.push(button);
     }
-    const buttons = insert(generateRandomNumber(0, 3))(correctButton)(incorrectButtons);
+
     return (
       <div>
         {buttons}
