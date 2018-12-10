@@ -2,17 +2,31 @@
   "name": "kanakama",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://chin-andrew.github.io/kanakama",
   "dependencies": {
     "ramda": "^0.26.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "react-test-renderer": "^16.6.3",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.12",
+    "@types/react": "^16.7.13",
+    "@types/react-dom": "^16.0.11",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "gh-pages": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

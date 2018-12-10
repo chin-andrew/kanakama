@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { includes } from 'ramda';
 import kana from '../kana'
 import { generateRandomNumber } from '../utils';
@@ -6,7 +6,7 @@ import AnswerButtons from './buttons'
 import fetchKanaImage from './image'
 import './question.css'
 
-export default class Question extends Component {
+export default class Question extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {

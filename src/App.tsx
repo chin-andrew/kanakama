@@ -5,8 +5,8 @@ import Question from './question/question';
 import title from './title/title';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
+class App extends Component<any, any> {
+  constructor(props: Object) {
     super(props);
     this.state = {
       mode: undefined,
@@ -15,7 +15,7 @@ class App extends Component {
     }
   }
 
-  setMode = (selectedMode) => {
+  setMode = (selectedMode: string) => {
     this.setState({ mode: selectedMode })
   }
 
