@@ -3,7 +3,7 @@ import modeSelector from './mode-selector';
 import logo from './logo';
 import './title.css';
 
-export default (onClick) => {
+export default (onClick: Function) => {
   return (
     <div className="title-container">
       {logo()}

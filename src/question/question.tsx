@@ -1,17 +1,29 @@
 import React, { PureComponent } from 'react';
 import { includes } from 'ramda';
+import TKana from '../types/kana';
 import kana from '../kana'
 import { generateRandomNumber } from '../utils';
 import AnswerButtons from './buttons'
 import fetchKanaImage from './image'
 import './question.css'
 
-export default class Question extends PureComponent {
-  constructor(props) {
+interface QuestionProps {
+  incrementCorrect: Function,
+  incrementIncorrect: Function,
+  mode: 'hiragana' | 'katakana' | 'all',
+}
+
+interface QuestionState {
+  buttonOptions: Array<number>,
+  selectedKana: TKana | null
+}
+
+export default class Question extends PureComponent<QuestionProps, QuestionState> {
+  constructor(props: QuestionProps) {
     super(props)
     this.state = {
       buttonOptions: [],
-      selectedKana: undefined,
+      selectedKana: null,
     }
   }
 
@@ -20,7 +32,6 @@ export default class Question extends PureComponent {
   }
 
   buildQuestion = () => {
-    this.setState({ incorrectAnswer: undefined })
     const buttonOptions = [];
     while (buttonOptions.length < 3) {
       const randomNumber = generateRandomNumber(0, kana.length);
@@ -32,21 +43,20 @@ export default class Question extends PureComponent {
     this.setState({ selectedKana, buttonOptions });
   }
 
-  selectImage = () => {
-    const { selectedKana } = this.state;
+  selectImage = (selectedKana: TKana) => {
 
-    switch (this.props.mode) {
-      case 'hiragana':
-        return selectedKana.hiraganaPath;
-      case 'katakana':
-        return selectedKana.katakanaPath;
-      default:
-        if (Math.random() < 0.5) {
+      switch (this.props.mode) {
+        case 'hiragana':
           return selectedKana.hiraganaPath;
-        } else {
+        case 'katakana':
           return selectedKana.katakanaPath;
-        }
-    }
+        default:
+          if (Math.random() < 0.5) {
+            return selectedKana.hiraganaPath;
+          } else {
+            return selectedKana.katakanaPath;
+          }
+      }
   }
 
   onClickCorrect = () => {
@@ -66,7 +76,7 @@ export default class Question extends PureComponent {
         {selectedKana &&
           (
             <div className='question'>
-              {fetchKanaImage(this.selectImage(), 'kana-image')}
+              {fetchKanaImage(this.selectImage(selectedKana), 'kana-image')}
               <div className='question__buttons'>
                 <AnswerButtons
                   buttonOptions={buttonOptions}

@@ -5,7 +5,8 @@ import Question from './question/question';
 import title from './title/title';
 import './App.css';
 
-class App extends Component<any, any> {
+
+class App extends Component<Object, any> {
   constructor(props: Object) {
     super(props);
     this.state = {

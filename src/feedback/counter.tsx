@@ -1,7 +1,7 @@
 import React from 'react';
 import './counter.css';
 
-export default (correct, incorrect) => {
+export default (correct: number, incorrect: number) => {
   return (
     <div className='counter'>
       <div className='counter__column'>

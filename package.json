@@ -9,11 +9,13 @@
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
     "react-test-renderer": "^16.6.3",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "webpack-env": "^0.8.0"
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.12",
+    "@types/ramda": "types/npm-ramda#dist",
     "@types/react": "^16.7.13",
     "@types/react-dom": "^16.0.11",
     "enzyme": "^3.7.0",

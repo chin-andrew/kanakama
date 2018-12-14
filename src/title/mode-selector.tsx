@@ -1,7 +1,7 @@
 import React from 'react';
 import './mode-selector.css';
 
-export default (onClick) => {
+export default (onClick: Function) => {
   return (
     <div className="mode-selector">
       <div className='mode-text'>What would you like to practice?</div>

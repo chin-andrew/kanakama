@@ -1,21 +1,33 @@
 import React, { PureComponent } from 'react';
 import kana from '../kana'
+import TKana from '../types/kana';
 import './buttons.css';
 
-export default class AnswerButtons extends PureComponent {
-  constructor(props) {
+interface AnswerButtonsProps {
+  buttonOptions: Array<number>,
+  onClickCorrect: Function,
+  onClickIncorrect: Function,
+  selectedKana: TKana,
+}
+
+interface AnswerButtonsState {
+  incorrectAnswer: string | null,
+}
+
+export default class AnswerButtons extends PureComponent<AnswerButtonsProps, AnswerButtonsState> {
+  constructor(props: AnswerButtonsProps) {
     super(props)
     this.state = {
-      incorrectAnswer: undefined,
+      incorrectAnswer: null,
     }
   }
 
-  setIncorrectAnswer = (incorrectAnswer) => {
+  setIncorrectAnswer = (incorrectAnswer: string) => {
     this.setState({ incorrectAnswer });
   }
 
   onClickNext = () => {
-    this.setState({ incorrectAnswer: undefined });
+    this.setState({ incorrectAnswer: null });
     this.props.onClickIncorrect();
   }
 
