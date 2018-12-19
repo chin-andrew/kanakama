@@ -1,51 +1,33 @@
 import React, { Component } from 'react';
 
-import displayScore from './feedback/counter';
-import Question from './question/question';
-import title from './title/title';
+import renderTitle from './title/title';
+import QuestionView from './views/questionView';
 import './App.css';
 
+interface AppProps {}
+interface AppState {
+  mode: 'hiragana' | 'katakana' | 'all' | null,
+}
 
-class App extends Component<Object, any> {
-  constructor(props: Object) {
+class App extends Component<AppProps, AppState> {
+  constructor(props: AppProps) {
     super(props);
     this.state = {
-      mode: undefined,
-      correct: 0,
-      incorrect: 0,
+      mode: null,
     }
   }
 
-  setMode = (selectedMode: string) => {
+  setMode = (selectedMode: 'hiragana' | 'katakana' | 'all') => {
     this.setState({ mode: selectedMode })
   }
 
-  incrementCorrect = () =>{
-    this.setState({ correct: this.state.correct + 1 })
-  }
-
-  incrementIncorrect = () => {
-    this.setState({ incorrect: this.state.incorrect + 1 })
-  }
-
   render() {
-    const { correct, incorrect, mode } = this.state;
+    const { mode } = this.state;
     return (
       <div>
-        {mode === undefined ? 
-          (title(this.setMode)) :
-          (
-            <div>
-              <div> ｋａｎａｋａｍａ </div>
-              <div> your kana companion </div>
-              <Question
-                incrementCorrect={this.incrementCorrect}
-                incrementIncorrect={this.incrementIncorrect}
-                mode={mode}
-              />
-              { displayScore(correct, incorrect) }
-            </div>
-          )
+        {mode === null ? 
+          (renderTitle(this.setMode)) :
+          (<QuestionView mode={mode} />)
         }
       </div>
     );

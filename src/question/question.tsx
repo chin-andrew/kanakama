@@ -4,7 +4,7 @@ import TKana from '../types/kana';
 import kana from '../kana'
 import { generateRandomNumber } from '../utils';
 import AnswerButtons from './buttons'
-import fetchKanaImage from './image'
+import fetchKanaImage from '../components/image'
 import './question.css'
 
 interface QuestionProps {
@@ -44,20 +44,19 @@ export default class Question extends PureComponent<QuestionProps, QuestionState
   }
 
   selectImage = (selectedKana: TKana) => {
-
-      switch (this.props.mode) {
-        case 'hiragana':
+    switch (this.props.mode) {
+      case 'hiragana':
+        return selectedKana.hiraganaPath;
+      case 'katakana':
+        return selectedKana.katakanaPath;
+      default:
+        if (Math.random() < 0.5) {
           return selectedKana.hiraganaPath;
-        case 'katakana':
+        } else {
           return selectedKana.katakanaPath;
-        default:
-          if (Math.random() < 0.5) {
-            return selectedKana.hiraganaPath;
-          } else {
-            return selectedKana.katakanaPath;
-          }
-      }
-  }
+        }
+    }
+}
 
   onClickCorrect = () => {
     this.props.incrementCorrect();

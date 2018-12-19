@@ -1,5 +1,5 @@
 export default [
-  // Vowels
+  // --- Vowels ---
   {
     id: 'kana-a',
     hiraganaPath: './hiragana-a.svg',
@@ -35,7 +35,7 @@ export default [
     name: 'o',
     family: 'vowel',
   },
-  // K-Family
+  // --- K-Family ---
   {
     id: 'kana-ka',
     hiraganaPath: './hiragana-ka.svg',
@@ -71,7 +71,7 @@ export default [
     name: 'ko',
     family: 'K',
   },
-  // N-Family
+  // --- N-Family ---
   {
     id: 'kana-na',
     hiraganaPath: './hiragana-na.svg',
@@ -107,7 +107,7 @@ export default [
     name: 'no',
     family: 'N',
   },
-  // M-Family
+  // --- M-Family ---
   {
     id: 'kana-ma',
     hiraganaPath: './hiragana-ma.svg',
@@ -143,7 +143,7 @@ export default [
     name: 'mo',
     family: 'M',
   },
-  // R-Family
+  // --- R-Family ---
   {
     id: 'kana-ra',
     hiraganaPath: './hiragana-ra.svg',
@@ -179,7 +179,7 @@ export default [
     name: 'ro',
     family: 'R',
   },
-  // S-Family
+  // --- S-Family ---
   {
     id: 'kana-sa',
     hiraganaPath: './hiragana-sa.svg',
@@ -215,7 +215,7 @@ export default [
     name: 'so',
     family: 'S',
   },
-  // H-Family
+  // --- H-Family ---
   {
     id: 'kana-ha',
     hiraganaPath: './hiragana-ha.png',

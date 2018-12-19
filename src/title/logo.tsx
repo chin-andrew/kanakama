@@ -1,5 +1,5 @@
 import React from 'react';
-import fetchKanaImage from '../question/image';
+import fetchKanaImage from '../components/image';
 import './logo.css';
 
 export default () => {
