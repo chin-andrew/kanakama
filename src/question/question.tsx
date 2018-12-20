@@ -1,16 +1,19 @@
 import React, { PureComponent } from 'react';
+// @ts-ignore -- types library does not contain definition for ramda.includes
 import { includes } from 'ramda';
-import TKana from '../types/kana';
+
+import fetchKanaImage from '../components/image'
 import kana from '../kana'
+import TKana from '../types/kana';
+import { EModes } from '../types/mode';
 import { generateRandomNumber } from '../utils';
 import AnswerButtons from './buttons'
-import fetchKanaImage from '../components/image'
 import './question.css'
 
 interface QuestionProps {
   incrementCorrect: Function,
   incrementIncorrect: Function,
-  mode: 'hiragana' | 'katakana' | 'all',
+  mode: EModes,
 }
 
 interface QuestionState {
@@ -45,9 +48,9 @@ export default class Question extends PureComponent<QuestionProps, QuestionState
 
   selectImage = (selectedKana: TKana) => {
     switch (this.props.mode) {
-      case 'hiragana':
+      case EModes.hiragana:
         return selectedKana.hiraganaPath;
-      case 'katakana':
+      case EModes.katakana:
         return selectedKana.katakanaPath;
       default:
         if (Math.random() < 0.5) {
@@ -72,21 +75,19 @@ export default class Question extends PureComponent<QuestionProps, QuestionState
     const { selectedKana, buttonOptions } = this.state;
     return (
       <div>
-        {selectedKana &&
-          (
-            <div className='question'>
-              {fetchKanaImage(this.selectImage(selectedKana), 'kana-image')}
-              <div className='question__buttons'>
-                <AnswerButtons
-                  buttonOptions={buttonOptions}
-                  onClickCorrect={this.onClickCorrect}
-                  onClickIncorrect={this.onClickIncorrect}
-                  selectedKana={selectedKana}
-                />
-              </div>
+        {selectedKana && (
+          <div className='question'>
+            {fetchKanaImage(this.selectImage(selectedKana), 'kana-image')}
+            <div className='question__buttons'>
+              <AnswerButtons
+                buttonOptions={buttonOptions}
+                onClickCorrect={this.onClickCorrect}
+                onClickIncorrect={this.onClickIncorrect}
+                selectedKana={selectedKana}
+              />
             </div>
-          )
-        }
+          </div>
+        )}
       </div>
     );
   }

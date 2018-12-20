@@ -47,8 +47,16 @@ export default class AnswerButtons extends PureComponent<AnswerButtonsProps, Ans
     for (const element in buttonOptions) {
         const currentKana = kana[buttonOptions[element]];
         const button = currentKana.name === selectedKana.name ?
-          <button className={correctButtonClassName} onClick={() => onClickCorrect()}>{currentKana.name}</button> :
-          <button className={incorrectButtonClassName} onClick={() => this.setIncorrectAnswer(currentKana.name)}>{currentKana.name}</button>;
+          <button
+            className={correctButtonClassName}
+            key={`button-${element}`}
+            onClick={() => onClickCorrect()}>{currentKana.name}
+          </button> :
+          <button
+          className={incorrectButtonClassName}
+          key={`button-${element}`}
+            onClick={() => this.setIncorrectAnswer(currentKana.name)}>{currentKana.name}
+          </button>;
         buttons.push(button);
     }
 

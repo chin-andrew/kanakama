@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
+import { EModes } from '../types/mode';
 import Question from '../question/question';
 import displayScore from '../feedback/counter';
 
 interface QuestionComopnentProps {
-  mode: 'hiragana' | 'katakana' | 'all',
+  mode: EModes,
 }
 
 interface QuestionComponentState {
@@ -12,6 +13,13 @@ interface QuestionComponentState {
 }
 
 export default class QuestionComponent extends PureComponent<QuestionComopnentProps, QuestionComponentState> {
+  constructor(props: QuestionComopnentProps) {
+    super(props);
+    this.state = {
+      correct: 0,
+      incorrect: 0,
+    }
+  }
 
   incrementCorrect = () =>{
     this.setState({ correct: this.state.correct + 1 })

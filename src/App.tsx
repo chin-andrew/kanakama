@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
 import renderTitle from './title/title';
+import { EModes } from './types/mode'
 import QuestionView from './views/questionView';
 import './App.css';
 
 interface AppProps {}
 interface AppState {
-  mode: 'hiragana' | 'katakana' | 'all' | null,
+  mode: EModes | null,
 }
 
 class App extends Component<AppProps, AppState> {
@@ -17,7 +18,7 @@ class App extends Component<AppProps, AppState> {
     }
   }
 
-  setMode = (selectedMode: 'hiragana' | 'katakana' | 'all') => {
+  setMode = (selectedMode: EModes) => {
     this.setState({ mode: selectedMode })
   }
 
