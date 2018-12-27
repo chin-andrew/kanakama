@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "737276d1b99b1541aad7227fc693c9c2",
-    "url": "/kanakama/static/media/hiragana-u.737276d1.svg"
+    "revision": "4c3274ca5a0626cc80475ab42588528d",
+    "url": "/kanakama/static/media/katakana-a.4c3274ca.svg"
   },
   {
-    "revision": "b62a0ecd682b71f5261e",
-    "url": "/kanakama/static/css/main.01c80851.chunk.css"
+    "revision": "f63892f35f846f3f01eb",
+    "url": "/kanakama/static/css/main.c9b74fd1.chunk.css"
   },
   {
-    "revision": "8afe98fd4e925d468ede",
-    "url": "/kanakama/static/js/1.8afe98fd.chunk.js"
+    "revision": "f312184231f288e3d6e3",
+    "url": "/kanakama/static/js/1.f3121842.chunk.js"
   },
   {
     "revision": "7ce0f2232f62027c240b",
@@ -168,12 +168,28 @@ self.__precacheManifest = [
     "url": "/kanakama/static/media/hiragana-tsu.7197f4ca.svg"
   },
   {
-    "revision": "b62a0ecd682b71f5261e",
-    "url": "/kanakama/static/js/main.b62a0ecd.chunk.js"
+    "revision": "737276d1b99b1541aad7227fc693c9c2",
+    "url": "/kanakama/static/media/hiragana-u.737276d1.svg"
   },
   {
-    "revision": "4c3274ca5a0626cc80475ab42588528d",
-    "url": "/kanakama/static/media/katakana-a.4c3274ca.svg"
+    "revision": "11859767adeeaff55e2cd0bd75b717ec",
+    "url": "/kanakama/static/media/hiragana-wa.11859767.svg"
+  },
+  {
+    "revision": "c59e6577241d50fa1a775e761aad4b5d",
+    "url": "/kanakama/static/media/hiragana-wo.c59e6577.svg"
+  },
+  {
+    "revision": "705b9d25c5d1e1d297c264b2deac7125",
+    "url": "/kanakama/static/media/hiragana-ya.705b9d25.svg"
+  },
+  {
+    "revision": "d2765a63d1c271ad408da7f90ddaa176",
+    "url": "/kanakama/static/media/hiragana-yu.d2765a63.svg"
+  },
+  {
+    "revision": "f63892f35f846f3f01eb",
+    "url": "/kanakama/static/js/main.f63892f3.chunk.js"
   },
   {
     "revision": "b4644e01a613bf04b19c48f1e267bb59",
@@ -336,7 +352,27 @@ self.__precacheManifest = [
     "url": "/kanakama/static/media/katakana-u.47c9b571.svg"
   },
   {
-    "revision": "fb2854c570f45d55de3eb69891953ac9",
+    "revision": "02da427b7108806934f6896b01eec770",
+    "url": "/kanakama/static/media/katakana-wa.02da427b.png"
+  },
+  {
+    "revision": "72eaff6b8cb8ba4318f7d6d9161f9669",
+    "url": "/kanakama/static/media/katakana-wo.72eaff6b.png"
+  },
+  {
+    "revision": "9e80e71a151e200537c7291bbbfa323b",
+    "url": "/kanakama/static/media/katakana-ya.9e80e71a.png"
+  },
+  {
+    "revision": "daa6c4d2de7c505490a210b4a7bafd93",
+    "url": "/kanakama/static/media/katakana-yo.daa6c4d2.png"
+  },
+  {
+    "revision": "a6760bed146243b08bbe7220480021dc",
+    "url": "/kanakama/static/media/katakana-yu.a6760bed.png"
+  },
+  {
+    "revision": "19fcad9368a36fa7672493d4d9ba51ff",
     "url": "/kanakama/index.html"
   }
 ];
