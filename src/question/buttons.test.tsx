@@ -19,33 +19,34 @@ describe('answer buttons tests', () => {
 
   it('should render 3 buttons', () => {
     const wrapper = renderButtons();
-    expect(wrapper.find('button')).toHaveLength(3);
+    expect(wrapper.find('#answer-button')).toHaveLength(3);
   })
 
   it('should display the correct answer when an incorrect answer is selected', () => {
     const wrapper = renderButtons();
-    const button = wrapper.find('button').get(1);
+    const button = wrapper.find('#answer-button').get(1);
     button.props.onClick();
     expect(wrapper.instance().state.incorrectAnswer).toEqual(kana[1].name)
-    expect(wrapper.find('.answer-button--incorrect')).toHaveLength(2);
-    expect(wrapper.find('.answer-button--correct')).toHaveLength(1);
+    expect(wrapper.find('.incorrect')).toHaveLength(2);
+    expect(wrapper.exists('.correct')).toBe(true);
   })
 
   it('should display a `next` button when an incorrect answer is selected', () => {
     const wrapper = renderButtons();
-    const button = wrapper.find('button').get(1);
+    const button = wrapper.find('#answer-button').get(1);
     button.props.onClick();
     expect(wrapper.instance().state.incorrectAnswer).toEqual(kana[1].name)
-    expect(wrapper.find('button')).toHaveLength(4);
-    expect(wrapper.find('.answer-button')).toHaveLength(1);
+    expect(wrapper.find('#answer-button')).toHaveLength(3);
+    expect(wrapper.exists('#next-button')).toBe(true);
   })
 
   it('should not display a `next` button when the correct answer is selected', () => {
     const answerSpy = sinon.spy();
     const wrapper = renderButtons({ onClickCorrect: answerSpy });
-    const button = wrapper.find('button').get(0);
+    const button = wrapper.find('#answer-button').get(0);
     button.props.onClick();
     sinon.assert.calledOnce(answerSpy);
-    expect(wrapper.find('button')).toHaveLength(3);
+    expect(wrapper.find('#answer-button')).toHaveLength(3);
+    expect(wrapper.exists('#next-button')).toBe(false);
   })
 })

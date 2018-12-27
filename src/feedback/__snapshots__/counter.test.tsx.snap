@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`counter tests renders a counter 1`] = `
+<div
+  className="sc-bdVaJa NFzwl"
+  id="counter"
+>
+  <div
+    className="sc-bwzfXH giRpJe"
+  >
+    <span
+      className="sc-htpNat fIjutD"
+    >
+      Correct:
+    </span>
+    <span
+      className="sc-bxivhb dzCqNz"
+    >
+      0
+    </span>
+  </div>
+  <div
+    className="sc-bwzfXH giRpJe"
+  >
+    <span
+      className="sc-htpNat fIjutD"
+    >
+      Incorrect:
+    </span>
+    <span
+      className="sc-bxivhb dzCqNz"
+    >
+      0
+    </span>
+  </div>
+</div>
+`;

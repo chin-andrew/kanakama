@@ -17,6 +17,6 @@ describe('QuestionView tests', () => {
   it('renders a QuestionView', () => {
     const wrapper = renderQuestionView();
     expect(wrapper.find(Question)).toHaveLength(1);
-    expect(wrapper.find('.counter')).toHaveLength(1);
+    expect(wrapper.find('#counter')).toHaveLength(1);
   })
 })

@@ -1,7 +1,22 @@
 import React, { PureComponent } from 'react';
+import styled, { keyframes } from 'styled-components';
+
 import { EModes } from '../types/mode';
 import Question from '../question/question';
 import displayScore from '../feedback/counter';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
+const Container = styled.div`
+  animation: 500ms ${fadeIn} ease-in-out;
+`
 
 interface QuestionComopnentProps {
   mode: EModes,
@@ -30,12 +45,11 @@ export default class QuestionComponent extends PureComponent<QuestionComopnentPr
   }
 
   render() {
-
     const { mode } = this.props;
     const { correct, incorrect } = this.state;
 
     return (
-      <div>
+      <Container>
         <div> ｋａｎａｋａｍａ </div>
         <div> your kana companion </div>
         <Question
@@ -44,7 +58,7 @@ export default class QuestionComponent extends PureComponent<QuestionComopnentPr
           mode={mode}
         />
         { displayScore(correct, incorrect) }
-      </div>
+      </Container>
     )
   }
 }

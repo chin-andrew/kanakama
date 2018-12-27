@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import renderTitle from './title/title';
 import { EModes } from './types/mode'
 import QuestionView from './views/questionView';
-import './App.css';
+
+const Container = styled.div`
+  margin: 12px;
+`
 
 interface AppProps {}
 interface AppState {
@@ -25,12 +29,12 @@ class App extends Component<AppProps, AppState> {
   render() {
     const { mode } = this.state;
     return (
-      <div>
+      <Container>
         {mode === null ? 
           (renderTitle(this.setMode)) :
           (<QuestionView mode={mode} />)
         }
-      </div>
+      </Container>
     );
   }
 }

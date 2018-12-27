@@ -23,7 +23,7 @@ describe('App tests', () => {
 
   it('renders the title view when no mode is selected', () => {
     const wrapper = renderApp();
-    expect(wrapper.find('.title-container')).toHaveLength(1);
+    expect(wrapper.find('#title-container')).toHaveLength(1);
     expect(wrapper.find(QuestionView)).toHaveLength(0);
   })
 
@@ -31,6 +31,6 @@ describe('App tests', () => {
     const wrapper = renderApp();
     wrapper.setState({ mode: EModes.hiragana })
     expect(wrapper.find(QuestionView)).toHaveLength(1);
-    expect(wrapper.find('.title-container')).toHaveLength(0);
+    expect(wrapper.find('#title-container')).toHaveLength(0);
   })
 })

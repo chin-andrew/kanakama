@@ -1,13 +1,9 @@
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import modeSelector from './mode-selector';
 
 describe('mode selector tests', () => {
-  const renderModeSelector = () => {
-    return shallow(modeSelector(() => {}));
-  }
-
   it('renders buttons for selecting a practice mode', () => {
-    const wrapper = renderModeSelector();
-    expect(wrapper.find('button')).toHaveLength(3)
+    const tree = renderer.create(modeSelector(() => {})).toJSON();
+    expect(tree).toMatchSnapshot();
   }) 
 })

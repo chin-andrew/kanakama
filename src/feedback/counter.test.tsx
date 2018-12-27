@@ -1,13 +1,9 @@
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import counter from './counter';
 
 describe('counter tests', () => {
-  const renderCounter = (correct: number, incorrect: number) => {
-    return shallow(counter(correct, incorrect))
-  }
-
-  it('renders a counter object', () => {
-    const wrapper = renderCounter(0, 0);
-    expect(wrapper.find('.counter__score')).toHaveLength(2);
+  it('renders a counter', () => {
+    const tree = renderer.create(counter(0, 0)).toJSON();
+    expect(tree).toMatchSnapshot();
   })
 })

@@ -13,6 +13,7 @@ const defaultProps = {
   mode: EModes.hiragana,
 }
 
+// We don't use a snapshot here since the question is randomly generated and thus the buttons would have different text
 describe('question tests', () => {
   const renderQuestion = (props: Object = {}) => {
     return shallow(<Question {...defaultProps} {...props} />)

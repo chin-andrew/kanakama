@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 // @ts-ignore -- types library does not contain definition for ramda.includes
 import { includes } from 'ramda';
+import styled from 'styled-components';
 
 import fetchKanaImage from '../components/image'
 import kana from '../kana'
@@ -8,7 +9,17 @@ import TKana from '../types/kana';
 import { EModes } from '../types/mode';
 import { generateRandomNumber } from '../utils';
 import AnswerButtons from './buttons'
-import './question.css'
+import './question.css';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const Responses = styled.div`
+  margin-top: 20px;
+`
 
 interface QuestionProps {
   incrementCorrect: Function,
@@ -31,10 +42,10 @@ export default class Question extends PureComponent<QuestionProps, QuestionState
   }
 
   componentDidMount() {
-    this.buildQuestion();
+    this.setQuestion();
   }
 
-  buildQuestion = () => {
+  setQuestion = () => {
     const buttonOptions = [];
     while (buttonOptions.length < 3) {
       const randomNumber = generateRandomNumber(0, kana.length);
@@ -63,32 +74,33 @@ export default class Question extends PureComponent<QuestionProps, QuestionState
 
   onClickCorrect = () => {
     this.props.incrementCorrect();
-    this.buildQuestion();
+    this.setQuestion();
   }
 
   onClickIncorrect = () => {
     this.props.incrementIncorrect();
-    this.buildQuestion();
+    this.setQuestion();
   }
 
   render() {
     const { selectedKana, buttonOptions } = this.state;
-    return (
-      <div>
+    
+    return(
+      <Container>
         {selectedKana && (
-          <div className='question'>
-            {fetchKanaImage(this.selectImage(selectedKana), 'kana-image')}
-            <div className='question__buttons'>
+          <React.Fragment>
+            {fetchKanaImage(this.selectImage(selectedKana), 'question-image')}
+            <Responses>
               <AnswerButtons
                 buttonOptions={buttonOptions}
                 onClickCorrect={this.onClickCorrect}
                 onClickIncorrect={this.onClickIncorrect}
                 selectedKana={selectedKana}
               />
-            </div>
-          </div>
+            </Responses>
+          </React.Fragment>
         )}
-      </div>
-    );
+      </Container>
+    )
   }
 }

@@ -1,17 +1,13 @@
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import sinon from 'sinon';
 
-import * as kanaImage from '../components/image';
+import * as Image from '../components/image';
 import logo from './logo';
 
 describe('logo tests', () => {
-  const renderLogo = () => {
-    return shallow(logo());
-  }
-
   let stub: any;
   beforeEach(() => {
-    stub = sinon.stub(kanaImage, 'default');
+    stub = sinon.stub(Image, 'default');
   })
 
   afterEach(() => {
@@ -19,8 +15,8 @@ describe('logo tests', () => {
   })
 
   it('renders the logo', () => {
-    const wrapper = renderLogo();
-    expect(wrapper.find('.logo-container')).toHaveLength(1);
-    sinon.assert.callCount(stub, 4); // it calls the render image function 4 times;
+    const tree = renderer.create(logo()).toJSON();
+    expect(tree).toMatchSnapshot();
+    sinon.assert.callCount(stub, 4);
   })
 })

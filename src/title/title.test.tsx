@@ -1,4 +1,4 @@
-import { shallow, render } from 'enzyme';
+import renderer from 'react-test-renderer';
 import sinon from 'sinon';
 import title from './title'
 import * as logo from './logo';
@@ -14,14 +14,8 @@ describe('title tests', () => {
     stub.restore()
   })
 
-  const renderTitle = () => {
-    return shallow(title(() => {}))
-  }
-
   it('renders a title page', () => {
-    const wrapper = renderTitle();
-    sinon.assert.calledOnce(stub); // calls logo function
-    expect(wrapper.find('.title').length).toEqual(1);
-    expect(wrapper.find('.mode-selector').length).toEqual(1);
+    const tree = renderer.create(title(() => {})).toJSON();
+    expect(tree).toMatchSnapshot();
   })
 })
