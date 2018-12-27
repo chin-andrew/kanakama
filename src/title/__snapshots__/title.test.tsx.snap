@@ -19,19 +19,19 @@ exports[`title tests renders a title page 1`] = `
       What would you like to practice?
     </span>
     <button
-      className="sc-bdVaJa eYKQVy"
+      className="sc-bdVaJa eXCJkO"
       onClick={[Function]}
     >
       Hiragana
     </button>
     <button
-      className="sc-bdVaJa eYKQVy"
+      className="sc-bdVaJa eXCJkO"
       onClick={[Function]}
     >
       Katakana
     </button>
     <button
-      className="sc-bdVaJa eYKQVy"
+      className="sc-bdVaJa eXCJkO"
       onClick={[Function]}
     >
       Hiragana and Katakana
