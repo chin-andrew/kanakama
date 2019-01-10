@@ -7,16 +7,16 @@ import QuestionView from './questionView';
 
 const defaultProps = {
   mode: EModes.all,
-}
+};
 
 describe('QuestionView tests', () => {
-  const renderQuestionView = (props: Object = {}) => {
-    return shallow(<QuestionView {...defaultProps} {...props} />)
-  }
+  const renderQuestionView = (props: object = {}) => {
+    return shallow(<QuestionView {...defaultProps} {...props} />);
+  };
 
   it('renders a QuestionView', () => {
     const wrapper = renderQuestionView();
     expect(wrapper.find(Question)).toHaveLength(1);
     expect(wrapper.find('#counter')).toHaveLength(1);
-  })
-})
+  });
+});

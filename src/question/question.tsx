@@ -3,42 +3,42 @@ import React, { PureComponent } from 'react';
 import { includes } from 'ramda';
 import styled from 'styled-components';
 
-import fetchKanaImage from '../components/image'
-import kana from '../kana'
+import fetchKanaImage from '../components/image';
+import kana from '../kana';
 import TKana from '../types/kana';
 import { EModes } from '../types/mode';
 import { generateRandomNumber } from '../utils';
-import AnswerButtons from './buttons'
+import AnswerButtons from './buttons';
 import './question.css';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 const Responses = styled.div`
   margin-top: 20px;
-`
+`;
 
 interface QuestionProps {
-  incrementCorrect: Function,
-  incrementIncorrect: Function,
-  mode: EModes,
+  incrementCorrect: () => void;
+  incrementIncorrect: () => void;
+  mode: EModes;
 }
 
 interface QuestionState {
-  buttonOptions: Array<number>,
-  selectedKana: TKana | null
+  buttonOptions: number[];
+  selectedKana: TKana | null;
 }
 
 export default class Question extends PureComponent<QuestionProps, QuestionState> {
   constructor(props: QuestionProps) {
-    super(props)
+    super(props);
     this.state = {
       buttonOptions: [],
       selectedKana: null,
-    }
+    };
   }
 
   componentDidMount() {
@@ -84,7 +84,7 @@ export default class Question extends PureComponent<QuestionProps, QuestionState
 
   render() {
     const { selectedKana, buttonOptions } = this.state;
-    
+
     return(
       <Container>
         {selectedKana && (
@@ -101,6 +101,6 @@ export default class Question extends PureComponent<QuestionProps, QuestionState
           </React.Fragment>
         )}
       </Container>
-    )
+    );
   }
 }

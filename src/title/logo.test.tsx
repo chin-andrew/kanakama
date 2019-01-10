@@ -8,15 +8,15 @@ describe('logo tests', () => {
   let stub: any;
   beforeEach(() => {
     stub = sinon.stub(Image, 'default');
-  })
+  });
 
   afterEach(() => {
     stub.restore();
-  })
+  });
 
   it('renders the logo', () => {
     const tree = renderer.create(logo()).toJSON();
     expect(tree).toMatchSnapshot();
     sinon.assert.callCount(stub, 4);
-  })
-})
+  });
+});

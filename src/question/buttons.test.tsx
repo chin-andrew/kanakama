@@ -7,38 +7,38 @@ import Buttons from './buttons';
 
 const defaultProps = {
   buttonOptions: [0, 1, 2],
-  onClickCorrect: () => {},
-  onClickIncorrect: () => {},
+  onClickCorrect: () => Object,
+  onClickIncorrect: () => Object,
   selectedKana: kana[0],
-}
+};
 
 describe('answer buttons tests', () => {
-  const renderButtons = (props: Object = {}): any => {
-    return shallow(<Buttons {...defaultProps} {...props} />)
-  }
+  const renderButtons = (props: object = {}): any => {
+    return shallow(<Buttons {...defaultProps} {...props} />);
+  };
 
   it('should render 3 buttons', () => {
     const wrapper = renderButtons();
     expect(wrapper.find('#answer-button')).toHaveLength(3);
-  })
+  });
 
   it('should display the correct answer when an incorrect answer is selected', () => {
     const wrapper = renderButtons();
     const button = wrapper.find('#answer-button').get(1);
     button.props.onClick();
-    expect(wrapper.instance().state.incorrectAnswer).toEqual(kana[1].name)
+    expect(wrapper.instance().state.incorrectAnswer).toEqual(kana[1].name);
     expect(wrapper.find('.incorrect')).toHaveLength(2);
     expect(wrapper.exists('.correct')).toBe(true);
-  })
+  });
 
   it('should display a `next` button when an incorrect answer is selected', () => {
     const wrapper = renderButtons();
     const button = wrapper.find('#answer-button').get(1);
     button.props.onClick();
-    expect(wrapper.instance().state.incorrectAnswer).toEqual(kana[1].name)
+    expect(wrapper.instance().state.incorrectAnswer).toEqual(kana[1].name);
     expect(wrapper.find('#answer-button')).toHaveLength(3);
     expect(wrapper.exists('#next-button')).toBe(true);
-  })
+  });
 
   it('should not display a `next` button when the correct answer is selected', () => {
     const answerSpy = sinon.spy();
@@ -48,5 +48,5 @@ describe('answer buttons tests', () => {
     sinon.assert.calledOnce(answerSpy);
     expect(wrapper.find('#answer-button')).toHaveLength(3);
     expect(wrapper.exists('#next-button')).toBe(false);
-  })
-})
+  });
+});

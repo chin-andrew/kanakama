@@ -12,19 +12,19 @@ const fadeIn = keyframes`
   100% {
     opacity: 1;
   }
-`
+`;
 
 const Container = styled.div`
   animation: 500ms ${fadeIn} ease-in-out;
-`
+`;
 
 interface QuestionComopnentProps {
-  mode: EModes,
+  mode: EModes;
 }
 
 interface QuestionComponentState {
-  correct: number,
-  incorrect: number,
+  correct: number;
+  incorrect: number;
 }
 
 export default class QuestionComponent extends PureComponent<QuestionComopnentProps, QuestionComponentState> {
@@ -33,15 +33,15 @@ export default class QuestionComponent extends PureComponent<QuestionComopnentPr
     this.state = {
       correct: 0,
       incorrect: 0,
-    }
+    };
   }
 
-  incrementCorrect = () =>{
-    this.setState({ correct: this.state.correct + 1 })
+  incrementCorrect = () => {
+    this.setState({ correct: this.state.correct + 1 });
   }
 
   incrementIncorrect = () => {
-    this.setState({ incorrect: this.state.incorrect + 1 })
+    this.setState({ incorrect: this.state.incorrect + 1 });
   }
 
   render() {
@@ -57,8 +57,8 @@ export default class QuestionComponent extends PureComponent<QuestionComopnentPr
           incrementIncorrect={this.incrementIncorrect}
           mode={mode}
         />
-        { displayScore(correct, incorrect) }
+        {displayScore(correct, incorrect)}
       </Container>
-    )
+    );
   }
 }

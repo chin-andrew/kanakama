@@ -21,21 +21,21 @@ const Button = styled.button`
   :focus {
     background-color: lightgrey;
   }
-`
+`;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 20px;  
-`
+  font-size: 20px;
+`;
 
 const Text = styled.span`
   margin-bottom: 8px;
-`
+`;
 
-export default (onClick: Function) => {
+export default (onClick: (mode: EModes) => void ) => {
   return (
     <Container>
       <Text>What would you like to practice?</Text>
@@ -43,5 +43,5 @@ export default (onClick: Function) => {
       <Button onClick={() => onClick(EModes.katakana)}>Katakana</Button>
       <Button onClick={() => onClick(EModes.all)}>Hiragana and Katakana</Button>
     </Container>
-  )
-}
+  );
+};

@@ -7,7 +7,7 @@ export const LogoContainer = styled.div`
   border: 4px solid black;
   margin: 16px;
   width: 150px;
-`
+`;
 
 export default () => {
   return (
@@ -17,5 +17,5 @@ export default () => {
       {fetchKanaImage('./hiragana-ka.svg', 'logo-image')}
       {fetchKanaImage('./hiragana-ma.svg', 'logo-image')}
     </LogoContainer>
-  )
-}
+  );
+};

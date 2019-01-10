@@ -26,7 +26,8 @@
     "enzyme-adapter-react-16": "^1.7.0",
     "gh-pages": "^2.0.1",
     "react-test-renderer": "^16.7.0",
-    "sinon": "^7.2.2"
+    "sinon": "^7.2.2",
+    "tslint": "^5.12.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,7 +35,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "yarn tslint -c tslint.json 'src/**/*.tsx'",
+    "lint-fix": "yarn tslint --fix -c tslint.json 'src/**/*.tsx'"
   },
   "eslintConfig": {
     "extends": "react-app"
