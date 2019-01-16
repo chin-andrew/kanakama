@@ -4,6 +4,7 @@ import fetchKanaImage from '../components/image';
 import './logo.css';
 
 export const LogoContainer = styled.div`
+  align-self: center;
   border: 4px solid black;
   margin: 16px;
   width: 150px;

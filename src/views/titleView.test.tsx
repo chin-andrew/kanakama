@@ -1,7 +1,9 @@
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import title from './title';
-import * as logo from './logo';
+
+import { noop } from '../utils';
+import title from './titleView';
+import * as logo from '../title/logo';
 
 describe('title tests', () => {
 
@@ -15,7 +17,7 @@ describe('title tests', () => {
   });
 
   it('renders a title page', () => {
-    const tree = renderer.create(title(() => Object)).toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(title(noop, noop));
+    expect(wrapper.find('#title-container')).toHaveLength(1);
   });
 });

@@ -2,26 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { EModes } from '../types/mode';
+import { EViews } from '../types/views';
 
-const Button = styled.button`
-  border: 2px solid black;
-  background: none;
-  cursor: pointer;
-  font-size: 16px;
-  letter-spacing: 0.3px;
-  margin: 4px;
-  outline: none;
-  padding: 12px 40px;
-  width: 200px;
-
-  :hover {
-    background-color: darkgrey;
-  }
-
-  :focus {
-    background-color: lightgrey;
-  }
-`;
+import Button from '../components/button';
 
 const Container = styled.div`
   display: flex;
@@ -35,9 +18,14 @@ const Text = styled.span`
   margin-bottom: 8px;
 `;
 
-export default (onClick: (mode: EModes) => void ) => {
+export default (setPracticeMode: (mode: EModes) => void, setView: (view: EViews) => void  ) => {
+  const onClick = (mode: EModes) => {
+    setPracticeMode(mode);
+    setView(EViews.practice);
+  };
+
   return (
-    <Container>
+    <Container id={'mode-container'}>
       <Text>What would you like to practice?</Text>
       <Button onClick={() => onClick(EModes.hiragana)}>Hiragana</Button>
       <Button onClick={() => onClick(EModes.katakana)}>Katakana</Button>

@@ -6,6 +6,7 @@ import { EModes } from '../types/mode';
 import AnswerButtons from './buttons';
 import Question from './question';
 import * as kanaImage from '../components/image';
+import { ESystem } from '../types/kana';
 
 const defaultProps = {
   incrementCorrect: () => Object,
@@ -13,7 +14,6 @@ const defaultProps = {
   mode: EModes.hiragana,
 };
 
-// We don't use a snapshot here since the question is randomly generated and thus the buttons would have different text
 describe('question tests', () => {
   const renderQuestion = (props: object = {}) => {
     return shallow(<Question {...defaultProps} {...props} />);
@@ -30,7 +30,7 @@ describe('question tests', () => {
 
   it('should render a question', () => {
     const wrapper = renderQuestion();
-    sinon.assert.calledOnce(stub); // calls kana image function
+    wrapper.setState({ mode: EModes.hiragana, system: ESystem.hiragana });
     expect(wrapper.find(AnswerButtons)).toHaveLength(1);
   });
 });

@@ -5,31 +5,32 @@ import styled from 'styled-components';
 
 import fetchKanaImage from '../components/image';
 import kana from '../kana';
-import TKana from '../types/kana';
+import TKana, { ESystem } from '../types/kana';
 import { EModes } from '../types/mode';
 import { generateRandomNumber } from '../utils';
 import AnswerButtons from './buttons';
 import './question.css';
 
-const Container = styled.div`
+const QuestionContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const Responses = styled.div`
+const ButtonContainer = styled.div`
   margin-top: 20px;
 `;
 
 interface QuestionProps {
-  incrementCorrect: () => void;
-  incrementIncorrect: () => void;
+  incrementCorrect: (character: string, system: ESystem) => void;
+  incrementIncorrect: (character: string, system: ESystem) => void;
   mode: EModes;
 }
 
 interface QuestionState {
   buttonOptions: number[];
   selectedKana: TKana | null;
+  system: ESystem | null;
 }
 
 export default class Question extends PureComponent<QuestionProps, QuestionState> {
@@ -38,6 +39,7 @@ export default class Question extends PureComponent<QuestionProps, QuestionState
     this.state = {
       buttonOptions: [],
       selectedKana: null,
+      system: null,
     };
   }
 
@@ -60,47 +62,54 @@ export default class Question extends PureComponent<QuestionProps, QuestionState
   selectImage = (selectedKana: TKana) => {
     switch (this.props.mode) {
       case EModes.hiragana:
+        this.setState({ system: ESystem.hiragana});
         return selectedKana.hiraganaPath;
-      case EModes.katakana:
+        case EModes.katakana:
+        this.setState({ system: ESystem.katakana});
         return selectedKana.katakanaPath;
-      default:
+        default:
         if (Math.random() < 0.5) {
+          this.setState({ system: ESystem.hiragana});
           return selectedKana.hiraganaPath;
         } else {
+          this.setState({ system: ESystem.katakana});
           return selectedKana.katakanaPath;
         }
     }
 }
 
-  onClickCorrect = () => {
-    this.props.incrementCorrect();
+  onClickCorrect = (character: string, system: ESystem) => {
+    this.props.incrementCorrect(character, system);
     this.setQuestion();
   }
 
-  onClickIncorrect = () => {
-    this.props.incrementIncorrect();
+  onClickIncorrect = (character: string, system: ESystem) => {
+    this.props.incrementIncorrect(character, system);
     this.setQuestion();
   }
 
   render() {
-    const { selectedKana, buttonOptions } = this.state;
+    const { selectedKana, buttonOptions, system } = this.state;
 
     return(
-      <Container>
+      <QuestionContainer>
         {selectedKana && (
           <React.Fragment>
             {fetchKanaImage(this.selectImage(selectedKana), 'question-image')}
-            <Responses>
-              <AnswerButtons
-                buttonOptions={buttonOptions}
-                onClickCorrect={this.onClickCorrect}
-                onClickIncorrect={this.onClickIncorrect}
-                selectedKana={selectedKana}
-              />
-            </Responses>
+            {system &&
+              <ButtonContainer>
+                <AnswerButtons
+                  buttonOptions={buttonOptions}
+                  onClickCorrect={this.onClickCorrect}
+                  onClickIncorrect={this.onClickIncorrect}
+                  selectedKana={selectedKana}
+                  system={system}
+                />
+              </ButtonContainer>
+            }
           </React.Fragment>
         )}
-      </Container>
+      </QuestionContainer>
     );
   }
 }

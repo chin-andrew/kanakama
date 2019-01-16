@@ -1,38 +1,53 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import renderTitle from './title/title';
 import { EModes } from './types/mode';
-import QuestionView from './views/questionView';
+import { EViews } from './types/views';
+import PracticeView from './views/practiceView';
+import renderTitle from './views/titleView';
 
 const Container = styled.div`
   margin: 12px;
 `;
 
 interface AppState {
-  mode: EModes | null;
+  view: EViews;
+  practiceMode: EModes;
 }
 
 class App extends Component<{}, AppState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      mode: null,
+      practiceMode: EModes.all,
+      view: EViews.title,
     };
   }
 
-  setMode = (selectedMode: EModes) => {
-    this.setState({ mode: selectedMode });
+  setView = (selectedView: EViews) => {
+    this.setState({ view: selectedView });
+  }
+
+  setPracticeMode = (selectedMode: EModes) => {
+    this.setState({ practiceMode: selectedMode });
+  }
+
+  displayView = (view: EViews, practiceMode: EModes) => {
+    switch (view) {
+      case EViews.title:
+        return renderTitle(this.setPracticeMode, this.setView);
+      case EViews.practice:
+        return <PracticeView mode={practiceMode} setView={this.setView} />;
+      default:
+        return renderTitle(this.setPracticeMode, this.setView);
+    }
   }
 
   render() {
-    const { mode } = this.state;
+    const { view, practiceMode } = this.state;
     return (
       <Container>
-        {mode === null ?
-          (renderTitle(this.setMode)) :
-          (<QuestionView mode={mode} />)
-        }
+        {this.displayView(view, practiceMode)}
       </Container>
     );
   }

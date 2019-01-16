@@ -4,7 +4,8 @@ import sinon from 'sinon';
 
 import * as kanaImage from './components/image';
 import { EModes } from './types/mode';
-import QuestionView from './views/questionView';
+import { EViews } from './types/views';
+import QuestionView from './views/practiceView';
 import App from './App';
 
 describe('App tests', () => {
@@ -21,15 +22,16 @@ describe('App tests', () => {
     stub.restore();
   });
 
-  it('renders the title view when no mode is selected', () => {
+  it('renders the title view the the title view is set', () => {
     const wrapper = renderApp();
+    wrapper.setState({ view: EViews.title });
     expect(wrapper.find('#title-container')).toHaveLength(1);
     expect(wrapper.find(QuestionView)).toHaveLength(0);
   });
 
-  it('renders the question view when a practice mode is selected', () => {
+  it('renders the question view when the practice view is set', () => {
     const wrapper = renderApp();
-    wrapper.setState({ mode: EModes.hiragana });
+    wrapper.setState({ mode: EModes.hiragana, view: EViews.practice });
     expect(wrapper.find(QuestionView)).toHaveLength(1);
     expect(wrapper.find('#title-container')).toHaveLength(0);
   });

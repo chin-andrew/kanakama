@@ -1,25 +1,15 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
+import Button from '../components/button';
 import kana from '../kana';
-import TKana from '../types/kana';
+import TKana, { ESystem } from '../types/kana';
 
-const Button = styled.button`
-  background-color: white;
-  border: 2px solid black;
-  font-size: 16px;
-  margin: 4px;
-  outline: none;
-  padding: 12px 0px;
+const AnswerButton = styled(Button)`
   width: 120px;
-  cursor: pointer;
 
   :disabled {
     color: black;
-  }
-
-  :hover {
-    background-color: darkgray;
   }
 
   &.correct {
@@ -40,9 +30,10 @@ const NextButtonContainer = styled.div`
 
 interface AnswerButtonsProps {
   buttonOptions: number[];
-  onClickCorrect: () => void;
-  onClickIncorrect: () => void;
+  onClickCorrect: (id: string, system: ESystem) => void;
+  onClickIncorrect: (id: string, system: ESystem) => void;
   selectedKana: TKana;
+  system: ESystem;
 }
 
 interface AnswerButtonsState {
@@ -62,8 +53,9 @@ export default class AnswerButtons extends PureComponent<AnswerButtonsProps, Ans
   }
 
   onClickNext = () => {
+    const { selectedKana, system } = this.props;
     this.setState({ incorrectAnswer: null });
-    this.props.onClickIncorrect();
+    this.props.onClickIncorrect(selectedKana.name, system);
   }
 
   render() {
@@ -71,6 +63,7 @@ export default class AnswerButtons extends PureComponent<AnswerButtonsProps, Ans
       buttonOptions,
       onClickCorrect,
       selectedKana,
+      system,
     } = this.props;
 
     const { incorrectAnswer } = this.state;
@@ -83,22 +76,26 @@ export default class AnswerButtons extends PureComponent<AnswerButtonsProps, Ans
       const currentKana = kana[element];
       const button = currentKana.name === selectedKana.name ?
         (
-          <Button
+          <AnswerButton
             id={'answer-button'}
             className={correctButtonClassName}
             disabled={!!incorrectAnswer}
             key={`button-${element}`}
-            onClick={() => onClickCorrect()}>{currentKana.name}
-          </Button>
+            onClick={() => onClickCorrect(selectedKana.name, system)}
+          >
+            {currentKana.name}
+          </AnswerButton>
         ) :
         (
-          <Button
+          <AnswerButton
             id={'answer-button'}
             className={incorrectButtonClassName}
             disabled={!!incorrectAnswer}
             key={`button-${element}`}
-            onClick={() => this.setIncorrectAnswer(currentKana.name)}>{currentKana.name}
-          </Button>
+            onClick={() => this.setIncorrectAnswer(currentKana.name)}
+          >
+            {currentKana.name}
+          </AnswerButton>
         );
       buttons.push(button);
     }
@@ -107,7 +104,7 @@ export default class AnswerButtons extends PureComponent<AnswerButtonsProps, Ans
       <div>
         {buttons}
         <NextButtonContainer>
-          {incorrectAnswer && <Button id={'next-button'} onClick={() => this.onClickNext()}>Next</Button>}
+          {incorrectAnswer && <AnswerButton id={'next-button'} onClick={() => this.onClickNext()}>Next</AnswerButton>}
         </NextButtonContainer>
       </div>
     );
