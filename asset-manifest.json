@@ -1,9 +1,9 @@
 {
-  "main.css": "/kanakama/static/css/main.f8554bd9.chunk.css",
-  "main.js": "/kanakama/static/js/main.a8602fb8.chunk.js",
-  "main.js.map": "/kanakama/static/js/main.a8602fb8.chunk.js.map",
-  "static/js/1.43e1882e.chunk.js": "/kanakama/static/js/1.43e1882e.chunk.js",
-  "static/js/1.43e1882e.chunk.js.map": "/kanakama/static/js/1.43e1882e.chunk.js.map",
+  "main.css": "/kanakama/static/css/main.8273ddc9.chunk.css",
+  "main.js": "/kanakama/static/js/main.10d85bc1.chunk.js",
+  "main.js.map": "/kanakama/static/js/main.10d85bc1.chunk.js.map",
+  "static/js/1.74149547.chunk.js": "/kanakama/static/js/1.74149547.chunk.js",
+  "static/js/1.74149547.chunk.js.map": "/kanakama/static/js/1.74149547.chunk.js.map",
   "runtime~main.js": "/kanakama/static/js/runtime~main.7ce0f223.js",
   "runtime~main.js.map": "/kanakama/static/js/runtime~main.7ce0f223.js.map",
   "static/media/katakana-ho.png": "/kanakama/static/media/katakana-ho.2d0e0cf6.png",
@@ -95,8 +95,8 @@
   "static/media/katakana-ya.png": "/kanakama/static/media/katakana-ya.9e80e71a.png",
   "static/media/katakana-yo.png": "/kanakama/static/media/katakana-yo.daa6c4d2.png",
   "static/media/katakana-yu.png": "/kanakama/static/media/katakana-yu.a6760bed.png",
-  "static/css/main.f8554bd9.chunk.css.map": "/kanakama/static/css/main.f8554bd9.chunk.css.map",
+  "static/css/main.8273ddc9.chunk.css.map": "/kanakama/static/css/main.8273ddc9.chunk.css.map",
   "index.html": "/kanakama/index.html",
-  "precache-manifest.1676f4cd5be839c4cd057b4f77c908ec.js": "/kanakama/precache-manifest.1676f4cd5be839c4cd057b4f77c908ec.js",
+  "precache-manifest.d93ed7766fccfa84464a35530fdfa411.js": "/kanakama/precache-manifest.d93ed7766fccfa84464a35530fdfa411.js",
   "service-worker.js": "/kanakama/service-worker.js"
 }
