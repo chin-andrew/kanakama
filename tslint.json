@@ -3,6 +3,7 @@
     "extends": ["tslint:recommended"],
     "jsRules": {},
     "rules": {
+        "forin": false,
         "interface-name": false,
         "member-access": false,
         "ordered-imports": false,

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Container from '../components/viewContainer';
 import { EModes } from '../types/mode';
 import { EViews } from '../types/views';
-import practiceSelector from '../title/practice-mode-selector';
+import ViewSelector from '../title/viewSelector';
 import logo from '../title/logo';
 
 const Title = styled.span`
@@ -18,7 +18,7 @@ export default (setPracticeMode: (mode: EModes) => void, setView: (view: EViews)
     <Container id={'title-container'}>
       {logo()}
       <Title> ｋａｎａｋａｍａ </Title>
-      {practiceSelector(setPracticeMode, setView)}
+      <ViewSelector setPracticeMode={setPracticeMode} setView={setView} />
     </Container>
   );
 };

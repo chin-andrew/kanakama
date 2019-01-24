@@ -40,12 +40,12 @@ export default class QuestionComponent extends PureComponent<QuestionComopnentPr
   }
 
   incrementCorrect = (character: string, system: ESystem) => {
-    this.updateStats(character, system, false);
+    this.updateStats(character, system, true);
     this.setState({ correct: this.state.correct + 1 });
   }
 
   incrementIncorrect = (character: string, system: ESystem) => {
-    this.updateStats(character, system, true);
+    this.updateStats(character, system, false);
     this.setState({ incorrect: this.state.incorrect + 1 });
   }
 

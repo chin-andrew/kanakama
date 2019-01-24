@@ -15,8 +15,4 @@ export default styled.button`
   :hover {
     background-color: darkgrey;
   }
-
-  :focus {
-    background-color: lightgrey;
-  }
 `;

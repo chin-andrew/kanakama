@@ -5,6 +5,7 @@ import { EModes } from './types/mode';
 import { EViews } from './types/views';
 import PracticeView from './views/practiceView';
 import renderTitle from './views/titleView';
+import ProfileView from './views/profileView';
 
 const Container = styled.div`
   margin: 12px;
@@ -38,6 +39,8 @@ class App extends Component<{}, AppState> {
         return renderTitle(this.setPracticeMode, this.setView);
       case EViews.practice:
         return <PracticeView mode={practiceMode} setView={this.setView} />;
+      case EViews.profile:
+        return <ProfileView setView={this.setView} />;
       default:
         return renderTitle(this.setPracticeMode, this.setView);
     }
