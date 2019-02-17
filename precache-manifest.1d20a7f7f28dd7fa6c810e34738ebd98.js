@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/kanakama/static/media/katakana-a.4c3274ca.svg"
   },
   {
-    "revision": "10d85bc184d94187c51f",
-    "url": "/kanakama/static/css/main.8273ddc9.chunk.css"
+    "revision": "4263869cd130283bb384",
+    "url": "/kanakama/static/css/main.4acbc28a.chunk.css"
   },
   {
-    "revision": "74149547d4d964ca9b9f",
-    "url": "/kanakama/static/js/1.74149547.chunk.js"
+    "revision": "f137c3194e466372ef47",
+    "url": "/kanakama/static/js/1.f137c319.chunk.js"
   },
   {
     "revision": "7ce0f2232f62027c240b",
@@ -188,8 +188,8 @@ self.__precacheManifest = [
     "url": "/kanakama/static/media/hiragana-yu.d2765a63.svg"
   },
   {
-    "revision": "10d85bc184d94187c51f",
-    "url": "/kanakama/static/js/main.10d85bc1.chunk.js"
+    "revision": "4263869cd130283bb384",
+    "url": "/kanakama/static/js/main.4263869c.chunk.js"
   },
   {
     "revision": "b4644e01a613bf04b19c48f1e267bb59",
@@ -372,7 +372,7 @@ self.__precacheManifest = [
     "url": "/kanakama/static/media/katakana-yu.a6760bed.png"
   },
   {
-    "revision": "48b62d3b5067cd274b1eae1463451cf7",
+    "revision": "d87e9d719143d3364ae1ce8fedc09c61",
     "url": "/kanakama/index.html"
   }
 ];
