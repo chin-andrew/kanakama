@@ -9,7 +9,6 @@ import TKana, { ESystem } from '../types/kana';
 import { EModes } from '../types/mode';
 import { generateRandomNumber } from '../utils';
 import AnswerButtons from './buttons';
-import './question.css';
 
 const QuestionContainer = styled.div`
   display: flex;

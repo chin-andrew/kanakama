@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Button from '../components/button';
 import Container from '../components/viewContainer';
-import renderStats from '../stats/stats';
+import StatsDisplay from '../stats/stats';
 import { IUserStats } from '../types/stats';
 import { EViews } from '../types/views';
 
@@ -12,6 +12,12 @@ const ClearButton = styled(Button)`
   :hover {
     background-color: tomato;
   }
+`;
+
+const NoStatsMessage = styled.span`
+  display: flex;
+  justify-content: center;
+  margin: 16px;
 `;
 
 interface ProfileViewProps {
@@ -39,12 +45,14 @@ export default class ProfileView extends PureComponent<ProfileViewProps, Profile
       <Container>
         {isNil(stats) ?
           (
-            <div>We couldn't find any practice data to display. Do some practice first and then check back!</div>
+            <NoStatsMessage id={'no-stats'}>
+              We couldn't find any practice data to display. Do some practice first and then check back!
+            </NoStatsMessage>
           ) :
           (
             <React.Fragment>
-              {renderStats(stats)}
-              <ClearButton onClick={() => localStorage.clear()}>Erase My Practice Stats</ClearButton>
+              <StatsDisplay stats={stats} />
+              <ClearButton id={'clear-stats'} onClick={() => localStorage.clear()}>Erase My Practice Data</ClearButton>
             </React.Fragment>
           )
         }

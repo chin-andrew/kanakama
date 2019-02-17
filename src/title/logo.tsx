@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import fetchKanaImage from '../components/image';
-import './logo.css';
 
 export const LogoContainer = styled.div`
   align-self: center;

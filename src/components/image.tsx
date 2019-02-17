@@ -1,4 +1,5 @@
 import React from 'react';
+import './image.css'
 
 export default (imagePath: string, className: string) => {
   // @ts-ignore

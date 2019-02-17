@@ -23,6 +23,14 @@ const AnswerButton = styled(Button)`
   }
 `;
 
+const AnswerButtonsContainer = styled.div`
+  display: flex;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+`;
+
 const NextButtonContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -101,12 +109,12 @@ export default class AnswerButtons extends PureComponent<AnswerButtonsProps, Ans
     }
 
     return (
-      <div>
-        {buttons}
+      <React.Fragment>
+      <AnswerButtonsContainer>{buttons}</AnswerButtonsContainer>
         <NextButtonContainer>
           {incorrectAnswer && <AnswerButton id={'next-button'} onClick={() => this.onClickNext()}>Next</AnswerButton>}
         </NextButtonContainer>
-      </div>
+      </React.Fragment>
     );
   }
 }
